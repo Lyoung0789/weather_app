@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import CurrentWeatherForm from './CurrentWeatherForm'
 import Weather from './Weather'
 import axios from 'axios'
+import APIKEY from '../key'
 
 class CurrentWeather extends Component{
 
@@ -24,7 +25,8 @@ class CurrentWeather extends Component{
 
     handleSubmit= event =>{
         event.preventDefault()
-        axios.get(`http://api.openweathermap.org/data/2.5/weather?zip=${this.state.zipcode}&appid=ee22a7e87fa9ebff263a1cf970c98f37`)
+        console.log(APIKEY)
+        axios.get(`http://api.openweathermap.org/data/2.5/weather?zip=${this.state.zipcode}&appid=${APIKEY}`)
         .then(response => {
             console.log("Response from api", response)
             const {main, wind, clouds} = response.data
